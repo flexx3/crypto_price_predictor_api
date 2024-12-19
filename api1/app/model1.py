@@ -68,7 +68,7 @@ class Arima:
         #get d
         d= self._get_d(data.Close)
         self.model= pm.auto_arima(data['Close'],
-                    start_p=1, start_q=1,max_p=10, max_q=10,  
+                    start_p=1, start_q=1,max_p=5, max_q=5,  
                        # frequency of series set to annual
                       d=d, # 'd' determined manually using the adf test
                       seasonal=False,  
@@ -76,7 +76,7 @@ class Arima:
                       trace=True,
                       error_action='ignore',  
                       suppress_warnings=True,
-                      stepwise=False,
+                      stepwise=True,
                      approximaton=False,
                      n_jobs= -1)
        #make forecast with the model
